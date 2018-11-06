@@ -8,4 +8,8 @@ public class Board {
 	public Board (List<Node> nodes) {
 		this.nodes = nodes;
 	}
+	
+	public List<Node> getNodes() {
+		return nodes;
+	}
 }

@@ -2,6 +2,7 @@ package BoggleGame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Boggle {
 	private Board board;
@@ -9,6 +10,7 @@ public class Boggle {
 	
 	public Boggle (String input) {
 		board = buildBoard(input);
+		solver = new GeneratePossibleWordSolver();
 	}
 	
 	public Board buildBoard (String input) {
@@ -33,13 +35,6 @@ public class Boggle {
 		
 		for (int rowChange : direction) {
 			for (int columnChange : direction) {
-				/*
-				int row = pos.getRow() + rowChange;
-				int column = pos.getColumn() + columnChange;
-				if (row <= dimension && column <= dimension) {
-					neighbours.add(new Position(row, column));
-				}
-				*/
 				Position neighbour = new Position(pos.getRow() + rowChange,
 						pos.getColumn() + columnChange);
 				if(!pos.equals(neighbour) && validPosition(neighbour, dimension)) {
@@ -67,8 +62,9 @@ public class Boggle {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Scanner in = new Scanner(System.in);
+		Boggle boggle = new Boggle(in.nextLine());
+		boggle.solve();
 	}
 
 }
