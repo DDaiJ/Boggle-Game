@@ -1,6 +1,6 @@
 # Boggle-Game
 
-The implementation uses Depth First Search to find all the possible answers on the board.
+The application uses Depth First Search to find all the possible answers on the board.
 
 for every node(character) on the board:
   mark the node as visited
