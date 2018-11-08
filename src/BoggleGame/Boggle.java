@@ -10,10 +10,10 @@ public class Boggle {
 	
 	public Boggle (String input) {
 		board = buildBoard(input);
-		solver = new GeneratePossibleWordSolver();
+		solver = new FindWordsFromDictionarySolver();
 	}
 	
-	public Board buildBoard (String input) {
+	private Board buildBoard (String input) {
 		List<Node> nodes = new ArrayList<Node>(input.length());
 		int dimension = (int) Math.sqrt(input.length());
 		
@@ -25,11 +25,11 @@ public class Boggle {
 		return new Board(nodes);
 	}
 	
-	public Node buildNode(char value, Position pos, int dimension) {
+	private Node buildNode(char value, Position pos, int dimension) {
 		return new Node(value, pos, getNeighbours(pos, dimension));
 	}
 	
-	public List<Position> getNeighbours(Position pos, int dimension) {
+	private List<Position> getNeighbours(Position pos, int dimension) {
 		int[] direction = {-1, 0, 1}; // possible neighbours' position
 		List<Position> neighbours = new ArrayList<Position>();
 		
@@ -45,26 +45,22 @@ public class Boggle {
 		return neighbours;
 	}
 	
-	public boolean validPosition(Position pos, int dimension) {
-		if (pos.getRow() >= 0 && pos.getRow() < dimension &&
-				pos.getColumn() >= 0 && pos.getColumn() <= dimension) {
-			return true;
-		}
-		return false;
+	private boolean validPosition(Position pos, int dimension) {
+		return pos.getRow() >= 0 && pos.getRow() < dimension &&
+				pos.getColumn() >= 0 && pos.getColumn() < dimension;
 	}
 	
-	public void solve() {
+	private void solve() {
 		List<String> foundWords = solver.solve(board);
 		
 		for (String word : foundWords) {
 			System.out.print(word + " ");
 		}
+		System.out.println();
 	}
 	
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		Boggle boggle = new Boggle(in.nextLine());
-		boggle.solve();
+		new Boggle("jsfncoiruwpddswf").solve();;
 	}
 
 }

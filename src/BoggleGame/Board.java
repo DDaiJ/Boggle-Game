@@ -12,4 +12,12 @@ public class Board {
 	public List<Node> getNodes() {
 		return nodes;
 	}
+	
+	public String toString() {
+		String out = "";
+		for (Node node : nodes) {
+			out = out + node.getValue();
+		}
+		return out;
+	}
 }

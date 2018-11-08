@@ -67584,7 +67584,5 @@ zygotene
 zygotic
 zymase
 zymosis
-zymotic
+zygotic
 zymurgy
-
-

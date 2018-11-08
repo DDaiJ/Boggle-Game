@@ -26,7 +26,7 @@ public class GeneratePossibleWordSolver extends WithDictionary implements Boggle
 			return;
 		}
 		
-		if (words.contains(currentWord)) {
+		if (words.contains(currentWord) && currentWord.length() >=3) {
 			foundWords.add(currentWord);
 		}
 		
