@@ -2,7 +2,6 @@ package BoggleGame;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Boggle {
 	private Board board;
@@ -50,7 +49,7 @@ public class Boggle {
 				pos.getColumn() >= 0 && pos.getColumn() < dimension;
 	}
 	
-	private void solve() {
+	public void solve() {
 		List<String> foundWords = solver.solve(board);
 		
 		for (String word : foundWords) {
@@ -58,9 +57,4 @@ public class Boggle {
 		}
 		System.out.println();
 	}
-	
-	public static void main(String[] args) {
-		new Boggle("jsfncoiruwpddswf").solve();;
-	}
-
 }
